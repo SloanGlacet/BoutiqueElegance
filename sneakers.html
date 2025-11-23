@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉLÉGANCE - Sneakers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            background: #0a1628;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 8px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 120px;
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 400;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 1px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Products Grid */
+        .products-container {
+            padding: 60px 8%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background: rgba(255,255,255,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: white;
+            padding: 30px;
+        }
+
+        .product-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .product-brand {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .product-price {
+            font-size: 22px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            font-weight: 600;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Arial', sans-serif;
+            border-radius: 5px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 100px;
+            padding: 60px 8%;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            nav {
+                padding: 20px 5%;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">ÉLÉGANCE</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="sneakers.html">Sneakers</a></li>
+            <li><a href="clothes.html">Clothes</a></li>
+            <li><a href="fragrance.html">Fragrance</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>SNEAKERS</h1>
+        <p>Notre collection exclusive de sneakers premium</p>
+    </div>
+
+    <!-- Products -->
+    <div class="products-container">
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%230a1628'%3ENike Air Jordan 1%3C/text%3E%3C/svg%3E" alt="Nike Air Jordan 1">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Nike</div>
+                    <div class="product-name">Air Jordan 1 Retro High</div>
+                    <div class="product-price">189,99€</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Nike Air Jordan 1 Retro High', 189.99)">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%230a1628'%3EYeezy Boost 350%3C/text%3E%3C/svg%3E" alt="Yeezy Boost 350">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Adidas</div>
+                    <div class="product-name">Yeezy Boost 350 V2</div>
+                    <div class="product-price">249,99€</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Adidas Yeezy Boost 350 V2', 249.99)">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%230a1628'%3ENike Dunk Low%3C/text%3E%3C/svg%3E" alt="Nike Dunk Low">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Nike</div>
+                    <div class="product-name">Dunk Low Panda</div>
+                    <div class="product-price">139,99€</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Nike Dunk Low Panda', 139.99)">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%230a1628'%3ENew Balance 550%3C/text%3E%3C/svg%3E" alt="New Balance 550">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">New Balance</div>
+                    <div class="product-name">550 White Green</div>
+                    <div class="product-price">159,99€</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('New Balance 550 White Green', 159.99)">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%230a1628'%3EAir Force 1%3C/text%3E%3C/svg%3E" alt="Air Force 1">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Nike</div>
+                    <div class="product-name">Air Force 1 '07</div>
+                    <div class="product-price">119,99€</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Nike Air Force 1', 119.99)">Ajouter au panier</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='32' fill='%230a1628'%3EAir Max 90%3C/text%3E%3C/svg%3E" alt="Air Max 90">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Nike</div>
+                    <div class="product-name">Air Max 90 Premium</div>
+                    <div class="product-price">169,99€</div>
+                    <button class="add-to-cart-btn" onclick="addToCart('Nike Air Max 90', 169.99)">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 ÉLÉGANCE. Tous droits réservés. | <a href="index.html">Retour à l'accueil</a></p>
+    </footer>
+
+    <script>
+        function addToCart(productName, price) {
+            alert(`${productName} ajouté au panier pour ${price}€`);
+            // Vous pouvez intégrer ici la logique du panier avec localStorage
+        }
+    </script>
+</body>
+</html>
